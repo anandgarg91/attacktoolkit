@@ -1,19 +1,19 @@
-#include "stdio.h"
+#include<stdio.h>
 #include<time.h>
 #include<pcap.h>
 #include<stdlib.h>
 
-void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header);
+void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header, char *ab);
 
-int main(void)
+int main(int argc, char **argv)
 {
-
+printf("%s",argv[0]);
 const u_char *packet;
 struct pcap_pkthdr packet_header;
 pcap_t *pcap_open_offline(const char *fname, char *errbuf);
 
 char error_buffer[PCAP_ERRBUF_SIZE];
-pcap_t *handle = pcap_open_offline("capture04.pcap", error_buffer);
+pcap_t *handle = pcap_open_offline(argv[1], error_buffer);
 
 packet = pcap_next(handle, &packet_header);
 if(packet == NULL){
@@ -21,14 +21,15 @@ if(packet == NULL){
 	return 2;
 }
 
-print_packet_info(packet, packet_header);
+print_packet_info(packet, packet_header, argv[2]);
+
 return 0;
 
 }
 
-void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header){
+void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header, char *ab){
 	
-	printf("packet cap length: %d\n", packet_header.caplen);
+	//printf("packet cap length: %d\n", packet_header.caplen);
 	printf("packet total len %d\n", packet_header.len);
 	unsigned char store[100];
 	for(int i=0;i<packet_header.len;i++)
@@ -50,12 +51,14 @@ void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header){
 		}
 printf("\n");
 FILE *fptr;
-fptr=fopen("testing.pcap","w");
+fptr=fopen(ab,"w");
 for(int j=0;j<packet_header.len;j++)
 {
 fprintf(fptr,"%x",store[j]);
 }
 fclose(fptr);
+
+
 }
 
 
