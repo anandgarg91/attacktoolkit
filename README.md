@@ -25,3 +25,13 @@ input file in certain order which is in inputfile.pcap
 # To get specific range of packet
 
 editcap -r oldfile newfile 1-10
+
+# Tcp Sequence details
+
+* Tcp sequence number starts form 35th byte (2 byte length)
+* Ack number starts from 37th byte (2 bytes)
+* These numbers are relative 
+* To get the absolute packet length (Ack of receiver - sequence of receiver to decode the next seq)
+
+
+
