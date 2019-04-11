@@ -31,7 +31,7 @@ editcap -r oldfile newfile 1-10
 * Tcp sequence number starts form 35th byte (2 byte length)
 * Ack number starts from 37th byte (2 bytes)
 * These numbers are relative 
-* To get the absolute packet length (Ack of receiver - sequence of receiver to decode the next seq)
+* To get the absolute packet length (Ack of receiver - sequence of sender to decode the next seq)
 
 
 
