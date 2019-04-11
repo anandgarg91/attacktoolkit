@@ -42,41 +42,44 @@ void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header){
 	printf("packet total len %d\n", packet_header.len);
 	unsigned char store[1000];
 	unsigned char store1[1000];
-	if(count==0)
-		{
-			for(int i=0;i<packet_header.len;i++)
+if(count==0)
+	{
+		for(int i=0;i<packet_header.len;i++)
+			{
+				if(i==38)	
 					{
-						if(i==38)	
-							{
-								const u_char *temp = (packet+38);
-								store[i]=*temp;
-								printf("%x", 0x99);
-							}
+						const u_char *temp = (packet+38);
+						store[i]=*temp;
+						printf("%x", 0x99);
+					}
 
-						else if(i==39)	
-							{
-								const u_char *temp = (packet+39);
-								store[i]=*temp;
-								printf("%x", 0x99);
-							}
-						else if(i==40)	
-							{
-								const u_char *temp = (packet+40);
-								store[i]=*temp;
-								printf("%x", 0x99);
-							}
-						else if(i==41)	
-							{
-								const u_char *temp = (packet+41);
-								store[i]=*temp;
-								printf("%x", 0x99);
-							}
-						else	
-							{
-								const u_char *temp = packet+i;
-								store[i]=*temp;
-								printf("%x", *temp);
-							}
+				else if(i==39)	
+					{
+						const u_char *temp = (packet+39);
+						store[i]=*temp;
+						printf("%x", 0x99);
+							
+					}
+				else if(i==40)	
+					{
+						const u_char *temp = (packet+40);
+						store[i]=*temp;
+						printf("%x", 0x99);
+					}
+						
+				else if(i==41)	
+					{
+						const u_char *temp = (packet+41);
+						store[i]=*temp;
+						printf("%x", 0x99);
+					}
+						
+				else	
+					{
+						const u_char *temp = packet+i;
+						store[i]=*temp;
+						printf("%x", *temp);
+					}
 				
 			
 					}
@@ -127,6 +130,7 @@ FILE *fptr;
 if(count==0)
 {
 fptr=fopen("output1.pcap","w");
+fprintf(fptr,"Seq # of Sender:");
 for(int j=38;j<42;j++)
 	{
 		fprintf(fptr,"%x",store[j]);
@@ -136,6 +140,7 @@ fclose(fptr);
 else
 {
 fptr=fopen("output2.pcap","w");
+fprintf(fptr,"Ack # of Receiver:");
 for(int j=42;j<46;j++)
 	{
 		fprintf(fptr,"%x",store1[j]);
