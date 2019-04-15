@@ -1,5 +1,5 @@
 # Attacktoolkit
-* ![Attacker](attacker.jpg)![toolkit](index.jpg)
+* ![Attacker](attacker.jpg)
 *Different attack scripts for PBA
 *Program will change the ttl value and stored the packet in file
 
