@@ -1,4 +1,4 @@
-<img src="attacker.png" width="400" height="790">
+<img src="attacker.png" width="10" height="10">
 # Attacktoolkit
 
 * Different attack scripts for PBA
