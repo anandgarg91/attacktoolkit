@@ -1,4 +1,4 @@
-![Attacker](attacker.png = 10*10)
+![Attacker](attacker.png =10*10)
 
 # Attacktoolkit
 
