@@ -1,5 +1,6 @@
-![Attacker](attacker.png =10*10)
-
+![Attacker](attacker.png){:class="img-responsive"}
+![Attacker](attacker.png){:height="50%" width="50%"}
+![Attacker](attacker.png){:height="700px" width="400px"}
 # Attacktoolkit
 
 * Different attack scripts for PBA
