@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<math.h>
 #include<string.h>
+#include<stdlib.h>
 
 int main()
 {
@@ -13,11 +14,11 @@ place =1;
 
 printf("enter anh hex number:");
 for(int j=0;j<2;j++)
-{
-printf("enter number");
-scanf("%s",hex);
-len= strlen(hex);
-len--;
+	{
+		printf("enter number");
+		scanf("%s",hex);
+		len= strlen(hex);
+		len--;
 
 for(i=0; hex[i]!='\0';i++)
 {
@@ -38,14 +39,15 @@ for(i=0; hex[i]!='\0';i++)
 	len--;
 }
 if(j==0)
-{decimal1 = decimal;
-decimal=0;
-}
+	{
+		decimal1 = decimal;
+		decimal=0;
+	}
 if(j==1)
-decimal2= decimal;
+	decimal2= decimal;
 }
 printf("Hexadecimal number = %s\n", hex);
-printf("Decimal number = %lld", decimal1-decimal2);
+printf("Absolute diff in Decimal number = %d", abs(decimal1-decimal2));
 
 return 0;
 }

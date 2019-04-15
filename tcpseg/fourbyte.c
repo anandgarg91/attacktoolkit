@@ -85,7 +85,7 @@ if(count==0)
 					}
 
 		}
-	else
+	else if(count==1)
 		{
 			for(int i=0;i<packet_header.len;i++)
 					{

@@ -1,3 +1,8 @@
+/*This work is to get the sequence number and ack number of sender and receiver of tcp packet
+in order to get the tcp segment length and able to predict the next sequence number*/
+
+
+
 #include<stdio.h>
 #include<time.h>
 #include<pcap.h>
@@ -45,214 +50,213 @@ void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header){
 	unsigned char store2[1000];
 	unsigned char store3[1000];
 if(count==0)
+{
+	for(int i=0;i<packet_header.len;i++)
 	{
-		for(int i=0;i<packet_header.len;i++)
+		if(i==38)	
 			{
-				if(i==38)	
-					{
-						const u_char *temp = (packet+38);
-						store[i]=*temp;
-						printf("%x", 0x99);
-					}
+				const u_char *temp = (packet+38);
+				store[i]=*temp;
+				printf("%x", 0x99);
+			}
 
-				else if(i==39)	
-					{
-						const u_char *temp = (packet+39);
-						store[i]=*temp;
-						printf("%x", 0x99);
+		else if(i==39)	
+			{
+				const u_char *temp = (packet+39);
+				store[i]=*temp;
+				printf("%x", 0x99);
 							
-					}
-				else if(i==40)	
-					{
-						const u_char *temp = (packet+40);
-						store[i]=*temp;
-						printf("%x", 0x99);
-					}
+			}
+		else if(i==40)	
+			{
+				const u_char *temp = (packet+40);
+				store[i]=*temp;
+				printf("%x", 0x99);
+			}
+					
+		else if(i==41)	
+			{
+				const u_char *temp = (packet+41);
+				store[i]=*temp;
+				printf("%x", 0x99);
+		
+			}
 						
-				else if(i==41)	
-					{
-						const u_char *temp = (packet+41);
-						store[i]=*temp;
-						printf("%x", 0x99);
-					}
-						
-				else	
-					{
-						const u_char *temp = packet+i;
-						store[i]=*temp;
-						printf("%x", *temp);
-					}
+		else	
+			{
+				const u_char *temp = packet+i;
+				store[i]=*temp;
+				printf("%x", *temp);
+			}
 				
 			
-					}
+	}
 
-		}
-	else if(count==1)
-		{
-			for(int i=0;i<packet_header.len;i++)
-					{
-						if(i==42)	
-							{
-								const u_char *temp = (packet+42);
-								store1[i]=*temp;
-								printf("%x", 0x99);
-							}
+}
+else if(count==1)
+{
+	for(int i=0;i<packet_header.len;i++)
+	{
+		if(i==42)	
+			{
+				const u_char *temp = (packet+42);
+				store1[i]=*temp;
+				printf("%x", 0x99);
+			}
 
-						else if(i==43)	
-							{
-								const u_char *temp = (packet+43);
-								store1[i]=*temp;
-								printf("%x", 0x99);
-							}
-						else if(i==44)	
-							{
-								const u_char *temp = (packet+44);
-								store1[i]=*temp;
-								printf("%x", 0x99);
-							}
-						else if(i==45)	
-							{
-								const u_char *temp = (packet+45);
-								store1[i]=*temp;
-								printf("%x", 0x99);
-							}
-						else	
-							{
-								const u_char *temp = packet+i;
-								store1[i]=*temp;
-								printf("%x", *temp);
-							}
+		else if(i==43)	
+			{
+				const u_char *temp = (packet+43);
+				store1[i]=*temp;
+				printf("%x", 0x99);
+			}
+		else if(i==44)	
+			{
+				const u_char *temp = (packet+44);
+				store1[i]=*temp;
+				printf("%x", 0x99);
+			}
+		else if(i==45)	
+			{
+				const u_char *temp = (packet+45);
+				store1[i]=*temp;
+				printf("%x", 0x99);
+			}
+		else	
+			{
+				const u_char *temp = packet+i;
+				store1[i]=*temp;
+				printf("%x", *temp);
+			}
 				
-			
-					}
-		}
+	}
+}
 
 else if(count==2)
+{
+	for(int i=0;i<packet_header.len;i++)
 	{
-		for(int i=0;i<packet_header.len;i++)
+		if(i==38)	
 			{
-				if(i==38)	
-					{
-						const u_char *temp = (packet+38);
-						store2[i]=*temp;
-						printf("%x", 0x99);
-					}
+				const u_char *temp = (packet+38);
+				store2[i]=*temp;
+				printf("%x", 0x99);
+			}
 
-				else if(i==39)	
-					{
-						const u_char *temp = (packet+39);
-						store2[i]=*temp;
-						printf("%x", 0x99);
+		else if(i==39)	
+			{
+				const u_char *temp = (packet+39);
+				store2[i]=*temp;
+				printf("%x", 0x99);
 							
-					}
-				else if(i==40)	
-					{
-						const u_char *temp = (packet+40);
-						store2[i]=*temp;
-						printf("%x", 0x99);
-					}
+			}
+		else if(i==40)	
+			{
+				const u_char *temp = (packet+40);
+				store2[i]=*temp;
+				printf("%x", 0x99);
+			}
 						
-				else if(i==41)	
-					{
-						const u_char *temp = (packet+41);
-						store2[i]=*temp;
-						printf("%x", 0x99);
-					}
+		else if(i==41)	
+			{
+				const u_char *temp = (packet+41);
+				store2[i]=*temp;
+				printf("%x", 0x99);
+			}
 						
-				else	
-					{
-						const u_char *temp = packet+i;
-						store2[i]=*temp;
-						printf("%x", *temp);
-					}
+		else	
+			{
+				const u_char *temp = packet+i;
+				store2[i]=*temp;
+				printf("%x", *temp);
+			}
 				
 			
-					}
+	}
 
-		}
-	else if(count==3)
-		{
-			for(int i=0;i<packet_header.len;i++)
-					{
-						if(i==42)	
-							{
-								const u_char *temp = (packet+42);
-								store3[i]=*temp;
-								printf("%x", 0x99);
-							}
+}
+else if(count==3)
+{
+	for(int i=0;i<packet_header.len;i++)
+	{
+		if(i==42)	
+			{
+				const u_char *temp = (packet+42);
+				store3[i]=*temp;
+				printf("%x", 0x99);
+			}
 
-						else if(i==43)	
-							{
-								const u_char *temp = (packet+43);
-								store3[i]=*temp;
-								printf("%x", 0x99);
-							}
-						else if(i==44)	
-							{
-								const u_char *temp = (packet+44);
-								store3[i]=*temp;
-								printf("%x", 0x99);
-							}
-						else if(i==45)	
-							{
-								const u_char *temp = (packet+45);
-								store3[i]=*temp;
-								printf("%x", 0x99);
-							}
-						else	
-							{
-								const u_char *temp = packet+i;
-								store3[i]=*temp;
-								printf("%x", *temp);
-							}
+		else if(i==43)	
+			{
+				const u_char *temp = (packet+43);
+				store3[i]=*temp;
+				printf("%x", 0x99);
+			}
+		else if(i==44)	
+			{
+				const u_char *temp = (packet+44);
+				store3[i]=*temp;
+				printf("%x", 0x99);
+			}
+		else if(i==45)	
+			{
+				const u_char *temp = (packet+45);
+				store3[i]=*temp;
+				printf("%x", 0x99);
+			}
+		else	
+			{
+				const u_char *temp = packet+i;
+				store3[i]=*temp;
+				printf("%x", *temp);
+			}
 				
 			
-					}
-		}
+	}
+}
 
 printf("\n");
 FILE *fptr;
 if(count==0)
-{
-fptr=fopen("output1.pcap","w");
-fprintf(fptr,"Seq # of Sender:");
-for(int j=38;j<42;j++)
 	{
-		fprintf(fptr,"%x",store[j]);
+		fptr=fopen("output1.pcap","w");
+		fprintf(fptr,"Seq # of Sender:");
+	for(int j=38;j<42;j++)
+		{
+			fprintf(fptr,"%x",store[j]);
+		}
+	fclose(fptr);
 	}
-fclose(fptr);
-}
 else if (count==1)
-{
-fptr=fopen("output2.pcap","w");
-fprintf(fptr,"Ack # of Receiver:");
-for(int j=42;j<46;j++)
 	{
-		fprintf(fptr,"%x",store1[j]);
-	}
-fclose(fptr);
+		fptr=fopen("output2.pcap","w");
+		fprintf(fptr,"Ack # of Receiver:");
+	for(int j=42;j<46;j++)
+		{
+			fprintf(fptr,"%x",store1[j]);
+		}
+	fclose(fptr);
 }
 else if (count==2)
-{
-fptr=fopen("output3.pcap","w");
-fprintf(fptr,"seq # of Receiver:");
-for(int j=38;j<42;j++)
 	{
-		fprintf(fptr,"%x",store2[j]);
-	}
-fclose(fptr);
+		fptr=fopen("output3.pcap","w");
+		fprintf(fptr,"seq # of Receiver:");
+	for(int j=38;j<42;j++)
+		{
+			fprintf(fptr,"%x",store2[j]);
+		}
+	fclose(fptr);
 }
 else if (count==3)
-{
-fptr=fopen("output4.pcap","w");
-fprintf(fptr,"Ack # of sender:");
-for(int j=42;j<46;j++)
 	{
-		fprintf(fptr,"%x",store3[j]);
-	}
-fclose(fptr);
+		fptr=fopen("output4.pcap","w");
+		fprintf(fptr,"Ack # of sender:");
+	for(int j=42;j<46;j++)
+		{
+			fprintf(fptr,"%x",store3[j]);
+		}
+	fclose(fptr);
 }
-
 count++;
 }
 

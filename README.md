@@ -33,5 +33,12 @@ editcap -r oldfile newfile 1-10
 * These numbers are relative 
 * To get the absolute packet length (Ack of receiver - sequence of sender to decode the next seq)
 
+# Tcp segement length to predict the next sequence
 
+* output of new_foutbyte program will give the requires seg and ack number to get the tcp segment length
 
+# Program to get the TCP seg length
+
+* Program name hex2dec.c 
+* compilation: gcc hex2dec -lm
+* The output is the absolute value of segment length
